@@ -8,8 +8,6 @@ import (
 	"strings"
 	"time"
 
-	"bookstore_share_oauth/oauth/errors"
-
 	"github.com/mercadolibre/golang-restclient/rest"
 )
 
