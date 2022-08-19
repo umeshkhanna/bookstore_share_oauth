@@ -2,6 +2,7 @@ package oauth
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -9,6 +10,7 @@ import (
 	"time"
 
 	"github.com/mercadolibre/golang-restclient/rest"
+	"github.com/umeshkhanna/bookstore_share_oauth/oauth/errors"
 )
 
 const (
