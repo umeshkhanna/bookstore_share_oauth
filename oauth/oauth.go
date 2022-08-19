@@ -1,13 +1,14 @@
 package oauth
 
 import (
-	"bookstore_share_oauth/oauth/errors"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/umeshkhanna/bookstore_share_oauth/oauth/errors"
 
 	"github.com/mercadolibre/golang-restclient/rest"
 )
@@ -73,6 +74,9 @@ func AuthenticateRequest(request *http.Request) *errors.RestErr {
 	}
 	at, err := getAccessToken(accessToken)
 	if err != nil {
+		if err.Status == http.StatusNotFound {
+			return nil
+		}
 		return err
 	}
 	request.Header.Add(headerXCallerId, fmt.Sprintf("%v", at.UserId))
